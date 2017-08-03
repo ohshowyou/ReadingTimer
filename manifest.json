@@ -1,0 +1,12 @@
+{
+    "name": "word counter",
+    "manifest_version": 2,
+    "version": "0.1",
+    "description": "counting words",
+    "permissions": ["contextMenus", "tabs", "background", "http://*/*", "https://*/*"],
+    "browser_action": {
+        "default_icon": "icon.png"},
+    "background": {
+        "scripts": ["background.js"]
+    }
+}
