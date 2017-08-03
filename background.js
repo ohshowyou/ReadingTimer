@@ -36,7 +36,7 @@ chrome.browserAction.onClicked.addListener(function() {
 
 // 右クリックメニュー
 chrome.contextMenus.create({
-    title: "word counter",
+    title: "Reading Timer",
     type: "normal",
     contexts : ["selection"],
     onclick: search()
