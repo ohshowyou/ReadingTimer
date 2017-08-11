@@ -1,4 +1,5 @@
-var count1 = 0;
+var reqtime = 0;
+var subcount = 0;
 
 function search(info,tab){
     return function(info,tab){
@@ -13,25 +14,30 @@ function search(info,tab){
             }
         }
         count = selection_array.length;
-        var sec = Math.floor(60 * count/180); 
+        var sec = Math.floor(60 * count/parseInt(localStorage.getItem("speed"),10)); 
         chrome.browserAction.setBadgeText({text:String(sec)});
-        count1 = sec;
+        reqtime = sec;
+        subcount = sec;
     }
 }
 
 var script = function(count){
-    if (count1 >= 0){
-        chrome.browserAction.setBadgeText({text:String(count1)});
-        count1--;
+    if (subcount >= 0){
+        chrome.browserAction.setBadgeText({text:String(subcount)});
+        subcount--;
         setTimeout(script, 1000)
     } else {
-      alert("Finish");  
+      alert("Finish "+ reqtime + "sec. (speed: " + localStorage.getItem("speed") + "words/min)");
     }
+}
+
+if (!localStorage["speed"]){
+    localStorage["speed"] = 180;
 }
 
 // アイコン押下
 chrome.browserAction.onClicked.addListener(function() {
-    script(count1);
+    script(subcount);
 });
 
 // 右クリックメニュー
