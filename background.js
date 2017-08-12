@@ -1,7 +1,7 @@
 var reqtime = 0;
 var subcount = 0;
 
-function search(info,tab){
+function calcTime(info,tab){
     return function(info,tab){
         var selection = info.selectionText;
 
@@ -45,5 +45,5 @@ chrome.contextMenus.create({
     title: "Reading Timer",
     type: "normal",
     contexts : ["selection"],
-    onclick: search()
+    onclick: calcTime()
 });
