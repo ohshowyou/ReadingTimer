@@ -2,6 +2,7 @@ $(function(){
     // save
     $("#save").click(function () {
         localStorage["speed"] = $("#speed").val();
+        location.reload();
     });
 
     // show default value
